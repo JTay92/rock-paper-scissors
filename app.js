@@ -4,12 +4,14 @@ const resultDisplay = document.getElementById("result");
 const possibleChoices = document.querySelectorAll("button");
 let userChoice;
 let computerChoice;
+let result;
 
 possibleChoices.forEach((choice) =>
   addEventListener("click", (rpsClick) => {
     userChoice = rpsClick.target.id;
     userChoiceDisplay.innerHTML = userChoice;
     generateCompChoice();
+    getResult();
   })
 );
 
@@ -39,4 +41,24 @@ function generateCompChoice() {
       console.log("error, this shouldn't happen");
   }
   computerChoiceDisplay.innerHTML = computerChoice;
+}
+
+// function to get the result of the rock, paper, scissors game
+function getResult() {
+  if (computerChoice === "paper" && userChoice === "scissors") {
+    result = ":) You Win!!";
+  } else if (computerChoice === "paper" && userChoice === "rock") {
+    result = ":( You Lose!";
+  } else if (computerChoice === "rock" && userChoice === "paper") {
+    result = ":) You Win!!";
+  } else if (computerChoice === "rock" && userChoice === "scissors") {
+    result = ":( You Lose!";
+  } else if (computerChoice === "scissors" && userChoice === "rock") {
+    result = ":) You Win!!";
+  } else if (computerChoice === "scissors" && userChoice === "paper") {
+    result = ":( You Lose!";
+  } else {
+    result = "It's a Draw!!";
+  }
+  resultDisplay.innerHTML = result;
 }
