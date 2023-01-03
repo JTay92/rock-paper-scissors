@@ -1,16 +1,31 @@
 const computerChoiceDisplay = document.getElementById("computer-choice");
 const userChoiceDisplay = document.getElementById("user-choice");
 const resultDisplay = document.getElementById("result");
-const possibleChoices = document.querySelectorAll("button");
+const possibleChoices = document.querySelectorAll(".rps-option");
+const possibleGameOption = document.querySelectorAll(".gm-option");
+// const possibleChoices = document.getElementsByClassName("rps-option");
+// const possibleGameOption = document.getElementsByClassName("gm-option");
 const userTwoChoiceDisplay = document.getElementById("user-two-choice");
+const gameModeChoiceDisplay = document.getElementById("game-mode");
 let userChoice;
 let userTwoChoice;
 let computerChoice;
+let gameModeChoice;
 let result;
+let gameOptions;
+
+possibleGameOption.forEach((btn, index) => {
+  btn.addEventListener("click", function (e) {
+    console.log(e.target.id, index);
+    gameModeChoice = e.target.id;
+    gameModeChoiceDisplay.innerHTML = gameModeChoice;
+  });
+});
 
 possibleChoices.forEach((choice) =>
   addEventListener("click", (rpsClick) => {
     userChoice = rpsClick.target.id;
+    // console.log(userChoice);
     userChoiceDisplay.innerHTML = userChoice;
     generateCompChoice();
     getResult();
@@ -19,16 +34,7 @@ possibleChoices.forEach((choice) =>
 
 function generateCompChoice() {
   const randomNumber = Math.floor(Math.random() * 3 + 1); // generate random number between 1 & 3
-  console.log(randomNumber);
-
-  //   if (randomNumber === 1) {
-  //     computerChoice = "rock";
-  //   } else if (randomNumber === 2) {
-  //     computerChoice = "paper";
-  //   } else if (randomNumber === 3) {
-  //     computerChoice = "scissors";
-  //   }
-
+  // console.log(randomNumber);
   switch (randomNumber) {
     case 1:
       computerChoice = "rock";
