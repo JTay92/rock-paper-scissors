@@ -22,15 +22,15 @@ possibleGameOption.forEach((btn, index) => {
   });
 });
 
-possibleChoices.forEach((choice) =>
-  addEventListener("click", (rpsClick) => {
+possibleChoices.forEach((rpsbtn) => {
+  rpsbtn.addEventListener("click", function (rpsClick) {
+    console.log(rpsClick.target.id);
     userChoice = rpsClick.target.id;
-    // console.log(userChoice);
     userChoiceDisplay.innerHTML = userChoice;
     generateCompChoice();
     getResult();
-  })
-);
+  });
+});
 
 function generateCompChoice() {
   const randomNumber = Math.floor(Math.random() * 3 + 1); // generate random number between 1 & 3
