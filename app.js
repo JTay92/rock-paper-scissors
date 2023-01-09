@@ -62,3 +62,38 @@ function getResult() {
   }
   resultDisplay.innerHTML = result;
 }
+
+function keepScore(result) {
+  console.log(result);
+  for (let i = 0; i < 2; i++) {
+    switch (result) {
+      case ":) You Win!!":
+        playerScore++;
+        playerScoreDisplay.innerHTML = playerScore;
+        console.log("Player + 1");
+        break;
+      case ":( You Lose!":
+        computerScore++;
+        computerScoreDisplay.innerHTML = computerScore;
+        console.log("Computer + 1");
+        break;
+      default:
+        console.log("Score not updated");
+    }
+  }
+}
+
+function detButtonClick() {
+  rockButton.addEventListener("click", function () {
+    userChoiceDisplay.innerHTML = "Rock";
+    console.log("User selected Rock");
+  });
+  paperButton.addEventListener("click", function () {
+    userChoiceDisplay.innerHTML = "Paper";
+    console.log("User selected Paper");
+  });
+  scissorsButton.addEventListener("click", function () {
+    userChoiceDisplay.innerHTML = "Scissors";
+    console.log("User selected Scissors");
+  });
+}
