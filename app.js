@@ -85,14 +85,17 @@ function keepScore(result) {
 
 function detButtonClick() {
   rockButton.addEventListener("click", function () {
+    userChoice = "rock";
     userChoiceDisplay.innerHTML = "Rock";
     console.log("User selected Rock");
   });
   paperButton.addEventListener("click", function () {
+    userChoice = "paper";
     userChoiceDisplay.innerHTML = "Paper";
     console.log("User selected Paper");
   });
   scissorsButton.addEventListener("click", function () {
+    userChoice = "scissors";
     userChoiceDisplay.innerHTML = "Scissors";
     console.log("User selected Scissors");
   });
