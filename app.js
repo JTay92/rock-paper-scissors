@@ -49,12 +49,12 @@ function keepScore(result) {
     case ":) You Win!!":
       playerScore++;
       playerScoreDisplay.innerHTML = playerScore;
-      console.log("Player + 1");
+      // console.log("Player + 1");
       break;
     case ":( You Lose!":
       computerScore++;
       computerScoreDisplay.innerHTML = computerScore;
-      console.log("Computer + 1");
+      // console.log("Computer + 1");
       break;
     default:
       console.log("Score not updated");
