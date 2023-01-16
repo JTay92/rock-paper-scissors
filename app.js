@@ -2,9 +2,9 @@ const computerChoiceDisplay = document.getElementById("computer-choice");
 const userChoiceDisplay = document.getElementById("user-choice");
 const resultDisplay = document.getElementById("result");
 const possibleChoices = document.querySelectorAll("[data-selection]");
-const playGameButton = document.getElementById("play");
 const playerScoreDisplay = document.getElementById("player-score");
 const computerScoreDisplay = document.getElementById("computer-score");
+const resetButton = document.getElementById("reset");
 let userChoice;
 let computerChoice;
 let result;
@@ -19,6 +19,7 @@ possibleChoices.forEach((possibleChoice) =>
     generateCompChoice();
     getResult();
     setTimeout(keepScore, 1000, result);
+    resetScore();
   })
 );
 
@@ -78,4 +79,13 @@ function generateCompChoice() {
       console.log("error, this shouldn't happen");
   }
   computerChoiceDisplay.innerHTML = computerChoice;
+}
+
+function resetScore() {
+  resetButton.addEventListener("click", () => {
+    playerScore = 0;
+    playerScoreDisplay.innerHTML = playerScore;
+    computerScore = 0;
+    computerScoreDisplay.innerHTML = computerScore;
+  });
 }
