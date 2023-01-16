@@ -1,47 +1,27 @@
 const computerChoiceDisplay = document.getElementById("computer-choice");
 const userChoiceDisplay = document.getElementById("user-choice");
 const resultDisplay = document.getElementById("result");
-const possibleChoices = document.querySelectorAll("button");
+const possibleChoices = document.querySelectorAll("[data-selection]");
+const playerScoreDisplay = document.getElementById("player-score");
+const computerScoreDisplay = document.getElementById("computer-score");
+const resetButton = document.getElementById("reset");
 let userChoice;
 let computerChoice;
 let result;
+let playerScore = 0;
+let computerScore = 0;
+let playGame = true;
 
-possibleChoices.forEach((choice) =>
-  addEventListener("click", (rpsClick) => {
-    userChoice = rpsClick.target.id;
+possibleChoices.forEach((possibleChoice) =>
+  possibleChoice.addEventListener("click", (rpsClick) => {
+    userChoice = possibleChoice.dataset.selection;
     userChoiceDisplay.innerHTML = userChoice;
     generateCompChoice();
     getResult();
+    setTimeout(keepScore, 1000, result);
+    resetScore();
   })
 );
-
-function generateCompChoice() {
-  const randomNumber = Math.floor(Math.random() * 3 + 1); // generate random number between 1 & 3
-  console.log(randomNumber);
-
-  //   if (randomNumber === 1) {
-  //     computerChoice = "rock";
-  //   } else if (randomNumber === 2) {
-  //     computerChoice = "paper";
-  //   } else if (randomNumber === 3) {
-  //     computerChoice = "scissors";
-  //   }
-
-  switch (randomNumber) {
-    case 1:
-      computerChoice = "rock";
-      break;
-    case 2:
-      computerChoice = "paper";
-      break;
-    case 3:
-      computerChoice = "scissors";
-      break;
-    default:
-      console.log("error, this shouldn't happen");
-  }
-  computerChoiceDisplay.innerHTML = computerChoice;
-}
 
 // function to get the result of the rock, paper, scissors game
 function getResult() {
@@ -61,4 +41,51 @@ function getResult() {
     result = "It's a Draw!!";
   }
   resultDisplay.innerHTML = result;
+}
+
+function keepScore(result) {
+  console.log(result);
+  switch (result) {
+    case ":) You Win!!":
+      playerScore++;
+      playerScoreDisplay.innerHTML = playerScore;
+      // console.log("Player + 1");
+      break;
+    case ":( You Lose!":
+      computerScore++;
+      computerScoreDisplay.innerHTML = computerScore;
+      // console.log("Computer + 1");
+      break;
+    default:
+      console.log("Score not updated");
+  }
+}
+
+function generateCompChoice() {
+  const randomNumber = Math.floor(Math.random() * 3 + 1); // generate random number between 1 & 3
+  // console.log(randomNumber);
+
+  switch (randomNumber) {
+    case 1:
+      computerChoice = "rock";
+      break;
+    case 2:
+      computerChoice = "paper";
+      break;
+    case 3:
+      computerChoice = "scissors";
+      break;
+    default:
+      console.log("error, this shouldn't happen");
+  }
+  computerChoiceDisplay.innerHTML = computerChoice;
+}
+
+function resetScore() {
+  resetButton.addEventListener("click", () => {
+    playerScore = 0;
+    playerScoreDisplay.innerHTML = playerScore;
+    computerScore = 0;
+    computerScoreDisplay.innerHTML = computerScore;
+  });
 }
