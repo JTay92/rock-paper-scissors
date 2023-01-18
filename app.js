@@ -18,7 +18,7 @@ possibleChoices.forEach((possibleChoice) =>
     userChoiceDisplay.innerHTML = userChoice;
     generateCompChoice();
     getResult();
-    setTimeout(keepScore, 1000, result);
+    setTimeout(keepScore, 500, result);
     resetScore();
   })
 );
