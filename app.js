@@ -87,5 +87,8 @@ function resetScore() {
     playerScoreDisplay.innerHTML = playerScore;
     computerScore = 0;
     computerScoreDisplay.innerHTML = computerScore;
+    userChoiceDisplay.innerHTML = "";
+    computerChoiceDisplay.innerHTML = "";
+    resultDisplay.innerHTML = "";
   });
 }
